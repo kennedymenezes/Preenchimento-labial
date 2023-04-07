@@ -35,7 +35,14 @@ class PatientDataSourceImpl implements PatientDatasource {
 
   @override
   Future<void> update(
-      {required String id, required PatienteModel patient}) async {
-    throw UnimplementedError();
+      {required int id, required Tratamento tratamento}) async {
+    List<PatienteModel> patients = await getAll();
+    PatienteModel currentPatient=patients.firstWhere((element) => element.id==id);
+    currentPatient.tratamento!.add(tratamento);
+    patients.removeWhere((element) => element.id==id);
+    patients.add(currentPatient);
+
+    await BdHelper.setData(key: BdKeyConstraints.patienteData, data: jsonEncode(patients));
+
   }
 }

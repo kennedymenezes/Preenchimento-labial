@@ -2,8 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:labial/app/domain/app/model/patiente_model.dart';
 import 'package:labial/app/modules/list_patient_info_module/bloc/list_patient_info_state.dart';
+import 'package:labial/app/modules/list_patient_info_module/list_patient_Info_routes.dart';
 
 import '../../../../generated/assets.dart';
 import '../../../domain/app/widget/custom/custom_app_bar.dart';
@@ -72,14 +74,14 @@ class ListPatientInfoPage extends StatelessWidget {
                 title: 'TRATAMENTO',
                 image: patiente.tratamento![0].image!,
                 sub: "1 MÊS",):
-              const AddUser(title: 'FOTO 1 MÊS',),
+               AddUser(title: 'FOTO 1 MÊS', userId: patiente.id!,),
               SizedBox(height: size.width * 0.1),
 
               patiente.tratamento!.length == 3 ? ViewPatientPhoto(
                 title: 'TRATAMENTO',
                 image: patiente.tratamento![0].image!,
                 sub: "6 MÊS",):
-              const AddUser(title: 'FOTO 6 MÊS',),
+               AddUser(title: 'FOTO 6 MÊS',userId: patiente.id!),
               SizedBox(height: size.width * 0.2),
               SizedBox(
                 height: 80,
@@ -175,8 +177,9 @@ class ViewPatientPhoto extends StatelessWidget {
 
 
 class AddUser extends StatelessWidget {
-  const AddUser({Key? key, required this.title}) : super(key: key);
+  const AddUser({Key? key, required this.title,required this.userId}) : super(key: key);
   final String title;
+  final int userId;
 
   @override
   Widget build(BuildContext context) {
@@ -184,38 +187,45 @@ class AddUser extends StatelessWidget {
         .of(context)
         .size;
 
-    return Container(
-      width: size.width * 0.9,
-      height: size.width * 0.2,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(
-          width: 1.3,
-          style: BorderStyle.solid,
-          color: const Color(0xff837B7D).withOpacity(0.6),
+    return InkWell(
+      onTap: ()async{
+        Map<String,dynamic> data={'title':title,'userId':userId};
+        Modular.to.pushNamed(".${ListPatientInfoRoutes.addPhoto}",arguments: data);
+
+      },
+      child: Container(
+        width: size.width * 0.9,
+        height: size.width * 0.2,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            width: 1.3,
+            style: BorderStyle.solid,
+            color: const Color(0xff837B7D).withOpacity(0.6),
+          ),
         ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
 
-            Image.asset(
-              Assets.assetsIconAdd,
-              width: size.width * 0.1,
+              Image.asset(
+                Assets.assetsIconAdd,
+                width: size.width * 0.1,
 
-            ),
+              ),
 
-            Text(title, style: Theme
-                .of(context)
-                .textTheme
-                .labelMedium),
-            const SizedBox(
-              width: 1,
-            ),
-          ],
+              Text(title, style: Theme
+                  .of(context)
+                  .textTheme
+                  .labelMedium),
+              const SizedBox(
+                width: 1,
+              ),
+            ],
+          ),
         ),
       ),
     );

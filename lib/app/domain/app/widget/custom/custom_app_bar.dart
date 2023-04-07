@@ -6,6 +6,9 @@ import '../../../../../generated/assets.dart';
 
 AppBar CustomAppBar(Size size) {
   return AppBar(
+    iconTheme: const IconThemeData(
+      color: Colors.white
+    ),
     centerTitle: true,
     title: Image.asset(
       Assets.assetsLogoAppbar,
