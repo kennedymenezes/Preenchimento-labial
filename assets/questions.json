@@ -1,0 +1,104 @@
+{
+  "questions": [
+    {
+      "type": "multiple",
+      "id": 1,
+      "title": "1. Qual objetivo do paciente?",
+      "options": [
+        "a) Volume",
+        "b) Hidratação",
+        "c) Contorno",
+        "d) Correção de Assimetria"
+      ]
+    },
+    {
+      "type": "oneChoice",
+      "id": 2,
+      "title": "2. o lábio já é simétrico?",
+      "options": [
+        "a) sim",
+        "b) não"
+      ]
+    },
+    {
+      "type": "oneChoice",
+      "id": 3,
+      "title": "3. como é o lábio do paciente?",
+      "options": [
+        "a) Lábio inferior mais fino que o superior. ",
+        "b) Lábio superior mais fino que o inferior. ",
+        "c) Lábio superior e inferior simétricos."
+      ]
+    },
+    {
+      "type": "oneChoice",
+      "id": 4,
+      "title": "4. o lábio do paciente já tem um bom:",
+      "options": [
+        "a) volume",
+        "b) Contorno",
+        "c) Nenhuma das alternativas"
+      ]
+    },
+    {
+      "type": "oneChoice",
+      "id": 5,
+      "title": "5. Paciente precisa preencher o filtro do lábio?",
+      "options": [
+        "a) sim",
+        "b) não"
+      ]
+    },
+    {
+      "type": "oneChoice",
+      "id": 6,
+      "title": "6. Paciente vai precisar preencher o arco do cupido?",
+      "options": [
+        "a) sim",
+        "b) não"
+      ]
+    },
+    {
+      "type": "oneChoice",
+      "id": 7,
+      "title": "7.Vai precisar ser feita a eversão labial?",
+      "options": [
+        "a) Sim, apenas em lábio superior.",
+        "b) Sim, apenas em lábio inferior. ",
+        "c) Sim, tanto em lábio superior quanto inferior.",
+        "d) Não vai ser necessário."
+      ]
+    },
+    {
+      "type": "oneChoice",
+      "id": 8,
+      "title": "8.O lábio inferior vai precisar de volume e contorno?",
+      "options": [
+        "a) Sim",
+        "b) APENAS VOLUME",
+        "c) APENAS CONTORNO",
+        "D) NENHUMA DAS OPÇÕES"
+      ]
+    }, {
+      "type": "oneChoice",
+      "id": 9,
+      "title": "9.O lábio superior vai precisar de volume e contorno?",
+      "options": [
+        "a) Sim",
+        "b) APENAS VOLUME",
+        "c) APENAS CONTORNO",
+        "D) NENHUMA DAS OPÇÕES"
+      ]
+    },{
+      "type": "oneChoice",
+      "id": 10,
+      "title": "10.Qual dispositivo vai ser usado para o preenchimento?",
+      "options": [
+        "a) AGULHA",
+        "b) CÂNULA",
+        "c) AGULHA + CÂNULA"
+
+      ]
+    }
+  ]
+}
