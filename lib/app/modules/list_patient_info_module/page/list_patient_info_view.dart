@@ -38,6 +38,8 @@ class ListPatientInfoPage extends StatelessWidget {
       appBar: CustomAppBar(size),
       body: BlocBuilder<ListPatientInfoBloc, ListPatientInfoState>(
         builder: (context, state) {
+
+
           return Column(
             children: [
               SizedBox(height: size.width * 0.08),
@@ -70,7 +72,7 @@ class ListPatientInfoPage extends StatelessWidget {
                 sub: "",),
               SizedBox(height: size.width * 0.1),
 
-              patiente.tratamento!.length == 2 ? ViewPatientPhoto(
+              patiente.tratamento!.length >= 2 ? ViewPatientPhoto(
                 title: 'TRATAMENTO',
                 image: patiente.tratamento![1].image!,
                 sub: "1 MÊS",):

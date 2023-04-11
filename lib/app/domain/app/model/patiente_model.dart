@@ -36,7 +36,8 @@ class PatienteModel {
 
 }
 int _idGenerator() {
-  final idGene= Random().nextInt(99999);
+  int idGene= Random().nextInt(99999999);
+
   return idGene;
 }
 /// id : "0000"

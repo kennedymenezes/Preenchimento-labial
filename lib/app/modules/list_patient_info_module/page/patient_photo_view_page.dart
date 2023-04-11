@@ -71,7 +71,7 @@ class _PatientPhotoViewPageState extends State<PatientPhotoViewPage> {
                var patientDatasource= PatientDataSourceImpl();
                 var tratamento=Tratamento(image:widget.imagePath,title:widget.title );
                 await patientDatasource.update(id: widget.userId, tratamento: tratamento);
-               Modular.to.popAndPushNamed(AppRoutes.home);
+               Modular.to.navigate(AppRoutes.home);
 
 
               },

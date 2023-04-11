@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:labial/app/domain/app/datasource/bd_helper.dart';
 import 'package:labial/app/domain/app/model/patiente_model.dart';
@@ -36,6 +37,8 @@ class PatientDataSourceImpl implements PatientDatasource {
   @override
   Future<void> update(
       {required int id, required Tratamento tratamento}) async {
+    tratamento.id= Random().nextInt(99999999);
+
     List<PatienteModel> patients = await getAll();
     PatienteModel currentPatient=patients.firstWhere((element) => element.id==id);
     currentPatient.tratamento!.add(tratamento);
