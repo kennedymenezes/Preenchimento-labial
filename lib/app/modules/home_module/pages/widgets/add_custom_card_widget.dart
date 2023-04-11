@@ -8,10 +8,10 @@ import '../../../../domain/app/routes/app_routes.dart';
 
 class AddCustomCardWidget extends StatelessWidget {
   const AddCustomCardWidget({
-    super.key,
+    super.key, required this.onTap,
 
   });
-
+final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +19,7 @@ class AddCustomCardWidget extends StatelessWidget {
 
     return Center(
       child: InkWell(
-        onTap: (){
-        Modular.to.pushNamed(AppRoutes.singup);
-        },
+        onTap: onTap,
         child: Container(
           width: size.width * 0.9,
           height: size.width * 0.2,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:labial/app/modules/list_patient_info_module/bloc/list_patient_info_bloc.dart';
+import 'package:labial/app/modules/list_patient_info_module/list_patient_Info_routes.dart';
 
 import '../../../../generated/assets.dart';
 import '../../../domain/app/widget/custom/cusom_button_ok_widget.dart';
@@ -60,10 +61,10 @@ class PatientPhotoPage extends StatelessWidget {
             CustomButtonOkWidget(
               onPressed: () {
                 if (photo != null) {
-                  Map<String,dynamic> data={'title':title,'path':photo!.path};
+                  Map<String,dynamic> data={'title':title,'path':photo!.path,"userId":userId};
                   bloc.patientPhoto=photo!.path;
                   bloc.userId=userId;
-                  Modular.to.pushNamed(".${SingupRoutes.okPhoto}",
+                  Modular.to.pushNamed(".${ListPatientInfoRoutes.okPhoto}",
                       arguments: data);
                 }
               },

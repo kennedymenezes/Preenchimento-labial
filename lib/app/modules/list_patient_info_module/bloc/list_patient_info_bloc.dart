@@ -26,6 +26,6 @@ class ListPatientInfoBloc extends Bloc<ListPatientInfoEvent, ListPatientInfoStat
   Future<void> _sendData(ListPatientInfoEventSendData event, Emitter<ListPatientInfoState> emit) async{
     var tratamento=Tratamento(image: patientPhoto,title: title);
     await patientDatasource.update(id: userId, tratamento: tratamento);
-    Modular.to.popAndPushNamed(AppRoutes.home);
+    Modular.to.pushNamed(AppRoutes.home);
   }
 }

@@ -2,25 +2,39 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:labial/app/domain/app/routes/app_routes.dart';
+import 'package:labial/app/domain/app/datasource/patiente_datasource_Impl.dart';
 
 import '../../../../generated/assets.dart';
+import '../../../domain/app/datasource/patient_datasource.dart';
+import '../../../domain/app/model/patiente_model.dart';
+import '../../../domain/app/routes/app_routes.dart';
 import '../../../domain/app/widget/custom/cusom_button_ok_widget.dart';
 import '../../../domain/app/widget/custom/custom_app_bar.dart';
 import '../bloc/list_patient_info_bloc.dart';
 import '../bloc/list_patient_info_event.dart';
 
 
-class PatientPhotoViewPage extends StatelessWidget {
-  PatientPhotoViewPage({Key? key, required this.imagePath, required this.title})
+class PatientPhotoViewPage extends StatefulWidget {
+  const PatientPhotoViewPage({Key? key, required this.imagePath, required this.title, required this.userId})
       : super(key: key);
   final String imagePath;
   final String title;
+  final int userId;
 
   @override
+  State<PatientPhotoViewPage> createState() => _PatientPhotoViewPageState();
+}
+
+
+class _PatientPhotoViewPageState extends State<PatientPhotoViewPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
-    final bloc = Modular.get<ListPatientInfoBloc>();
+
     final size = MediaQuery.of(context).size;
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -39,11 +53,11 @@ class PatientPhotoViewPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12)),
                 child: Column(
                   children: [
-                    Center(child: Text(title),),
+                    Center(child: Text(widget.title),),
                     ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
                       child: Image.file(
-                        File(imagePath),
+                        File(widget.imagePath),
                         width: size.width*0.6,
                         height: size.width*0.35,
                         fit: BoxFit.cover,
@@ -53,9 +67,13 @@ class PatientPhotoViewPage extends StatelessWidget {
                 )),
             SizedBox(height: size.width * 0.3),
             CustomButtonOkWidget(
-              onPressed: () {
-                bloc.title=title;
-                bloc.add(ListPatientInfoEventSendData());
+              onPressed: ()async {
+               var patientDatasource= PatientDataSourceImpl();
+                var tratamento=Tratamento(image:widget.imagePath,title:widget.title );
+                await patientDatasource.update(id: widget.userId, tratamento: tratamento);
+               Modular.to.popAndPushNamed(AppRoutes.home);
+
+
               },
               title: "ENVIAR ARQUIVO",
               color: const Color(0xff7A7375),

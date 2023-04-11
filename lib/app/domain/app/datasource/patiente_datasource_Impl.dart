@@ -42,6 +42,8 @@ class PatientDataSourceImpl implements PatientDatasource {
     patients.removeWhere((element) => element.id==id);
     patients.add(currentPatient);
 
+
+
     await BdHelper.setData(key: BdKeyConstraints.patienteData, data: jsonEncode(patients));
 
   }

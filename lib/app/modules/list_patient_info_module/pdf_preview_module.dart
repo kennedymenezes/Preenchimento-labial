@@ -28,7 +28,8 @@ class ListPatientInfoModule extends Module {
       ListPatientInfoRoutes.okPhoto,
       child: (context, args) => PatientPhotoViewPage(
         imagePath: args.data["path"],
-        title: args.data["title"],
+        title: args.data["title"], userId: args.data["userId"],
+
       ),
     ),
       ];

@@ -8,10 +8,11 @@ import '../../../../domain/app/routes/app_routes.dart';
 
 class PatientCardWidget extends StatelessWidget {
    const PatientCardWidget({
-    super.key, required this.pacient,
+    super.key, required this.pacient, required this.onTap,
 
   });
    final PatienteModel pacient;
+final   VoidCallback onTap;
 
 
 
@@ -22,9 +23,7 @@ class PatientCardWidget extends StatelessWidget {
 
     return Center(
       child: InkWell(
-        onTap: (){
-          Modular.to.pushNamed(AppRoutes.listPatientInfo,arguments: pacient);
-        },
+        onTap: onTap,
         child: Container(
           width: size.width * 0.9,
           height: size.width * 0.2,

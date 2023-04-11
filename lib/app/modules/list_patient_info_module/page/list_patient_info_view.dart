@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -30,7 +31,6 @@ class ListPatientInfoPage extends StatelessWidget {
   }
 
   Widget _buildPage(BuildContext context) {
-    final bloc = BlocProvider.of<ListPatientInfoBloc>(context);
     final size = MediaQuery
         .of(context)
         .size;
@@ -72,14 +72,14 @@ class ListPatientInfoPage extends StatelessWidget {
 
               patiente.tratamento!.length == 2 ? ViewPatientPhoto(
                 title: 'TRATAMENTO',
-                image: patiente.tratamento![0].image!,
+                image: patiente.tratamento![1].image!,
                 sub: "1 MÊS",):
                AddUser(title: 'FOTO 1 MÊS', userId: patiente.id!,),
               SizedBox(height: size.width * 0.1),
 
               patiente.tratamento!.length == 3 ? ViewPatientPhoto(
                 title: 'TRATAMENTO',
-                image: patiente.tratamento![0].image!,
+                image: patiente.tratamento![2].image!,
                 sub: "6 MÊS",):
                AddUser(title: 'FOTO 6 MÊS',userId: patiente.id!),
               SizedBox(height: size.width * 0.2),
