@@ -24,7 +24,7 @@ class SplashPage extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
-                    height: size.width*0.2,
+                    height: size.width * 0.2,
                   ),
                   Image.asset(
                     Assets.assetsLabio,
@@ -32,34 +32,31 @@ class SplashPage extends StatelessWidget {
                   ),
                   Text(
                     "Preenchimento",
-                    style: GoogleFonts.alumniSans(
-                        fontSize: 29, color: Colors.white),
+                    style: GoogleFonts.alumniSans(fontSize: 29, color: Colors.white),
                   ),
                   Image.asset(
                     Assets.assetsLabial,
                     width: size.width * 0.3,
                   ),
-                   SizedBox(
-                    height: size.width*0.3,
+                  SizedBox(
+                    height: size.width * 0.3,
                   ),
                   Container(
                     padding: EdgeInsets.zero,
-                    height: size.width*0.3,
+                    height: size.width * 0.3,
                     child: ClipRect(
-
                       child: GestureDetector(
                         onTap: () {
-                          Modular.to.pushReplacementNamed(AppRoutes.home);
+                          Modular.to.pushReplacementNamed(AppRoutes.about);
                         },
                         child: Image.asset(
                           Assets.assetsBotaoEntrar,
                         ),
                       ),
                     ),
-
                   ),
                   SizedBox(
-                    height: size.width*0.3,
+                    height: size.width * 0.25,
                   ),
                   Image.asset(
                     Assets.assetsLogoFacul,

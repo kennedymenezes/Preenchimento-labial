@@ -35,71 +35,66 @@ class SigupPage extends StatelessWidget {
         appBar: CustomAppBar(size),
         body: BlocBuilder<SingupBloc, SingupState>(
           builder: (context, state) {
-            return Column(
-              children: [
-                SizedBox(height: size.width * 0.08),
-                Center(
-                  child: Text(
-                    "CADASTRAR PACIENTE",
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineMedium
-                        ?.copyWith(color: Theme.of(context).primaryColor),
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: size.width * 0.08),
+                  Center(
+                    child: Text(
+                      "CADASTRAR PACIENTE",
+                      style:
+                          Theme.of(context).textTheme.headlineMedium?.copyWith(color: Theme.of(context).primaryColor),
+                    ),
                   ),
-                ),
-                SizedBox(height: size.width * 0.08),
-                Divider(
-                  height: 20,
-                  thickness: 1,
-                  indent: 30,
-                  endIndent: 30,
-                  color: Theme.of(context).primaryColor,
-                ),
-                SizedBox(height: size.width * 0.1),
-                Padding(
-                  padding: EdgeInsets.only(right: size.width * 0.4),
-                  child: Text("NOME DA PACIENTE",
-                      style: Theme.of(context).textTheme.labelMedium),
-                ),
-                SizedBox(
-                  width: size.width * 0.9,
-                  child: TextField(
-                    controller: userNameController,
-                    decoration: InputDecoration(
-                      hintText: 'digite aqui...',
-                      icon: Icon(Icons.person,
-                          color: Theme.of(context).primaryColor),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            width: 2, color: Theme.of(context).primaryColor),
-                      ),
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            width: 2, color: Theme.of(context).primaryColor),
+                  SizedBox(height: size.width * 0.08),
+                  Divider(
+                    height: 20,
+                    thickness: 1,
+                    indent: 30,
+                    endIndent: 30,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  SizedBox(height: size.width * 0.1),
+                  Padding(
+                    padding: EdgeInsets.only(right: size.width * 0.4),
+                    child: Text("NOME DA PACIENTE", style: Theme.of(context).textTheme.labelMedium),
+                  ),
+                  SizedBox(
+                    width: size.width * 0.9,
+                    child: TextField(
+                      controller: userNameController,
+                      decoration: InputDecoration(
+                        hintText: 'digite aqui...',
+                        icon: Icon(Icons.person, color: Theme.of(context).primaryColor),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(width: 2, color: Theme.of(context).primaryColor),
+                        ),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(width: 2, color: Theme.of(context).primaryColor),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(height: size.width * 0.1),
-                CustomButtonOkWidget(
-                  onPressed: () async {
-                    await BdHelper.setData(
-                        data: userNameController.text, key: BdKeyConstraints.userName);
-                    bloc.patientName=userNameController.text;
-                    Modular.to.pushNamed(".${SingupRoutes.addPhoto}");
-                  },
-                  title: "OK",
-                  color: Theme.of(context).primaryColor,
-                ),
-                SizedBox(height: size.width * 0.6),
-                SizedBox(
-                  height: 80,
-                  child: Image.asset(
-                    Assets.assetsLogoFacul,
+                  SizedBox(height: size.width * 0.1),
+                  CustomButtonOkWidget(
+                    onPressed: () async {
+                      await BdHelper.setData(data: userNameController.text, key: BdKeyConstraints.userName);
+                      bloc.patientName = userNameController.text;
+                      Modular.to.pushNamed(".${SingupRoutes.addPhoto}");
+                    },
+                    title: "OK",
                     color: Theme.of(context).primaryColor,
                   ),
-                )
-              ],
+                  SizedBox(height: size.width * 0.6),
+                  SizedBox(
+                    height: 80,
+                    child: Image.asset(
+                      Assets.assetsLogoFacul,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  )
+                ],
+              ),
             );
           },
         ));

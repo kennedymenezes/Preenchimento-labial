@@ -38,6 +38,7 @@ dependencies:
   google_fonts: any
   flutter_modular: any
   shared_preferences: any
+  url_launcher: any
   flutter_bloc: any
   path_provider: any
   image_picker: ^0.8.7+1
@@ -46,7 +47,6 @@ dependencies:
   printing: ^5.10.3
   flutter_localizations:
     sdk: flutter
-  intl: any
 
 
 
@@ -83,6 +83,7 @@ flutter:
     - assets/icon_folder.png
     - assets/icon_add.png
     - assets/botao_ok.png
+    - assets/instagram.png
     - assets/botao_add_image.png
     - assets/questions.json
     - assets/logo_colorido.png

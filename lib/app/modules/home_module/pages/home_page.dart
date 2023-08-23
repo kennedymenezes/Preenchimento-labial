@@ -31,41 +31,41 @@ class HomePage extends StatelessWidget {
         body: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
             if (state is HomeStateSuccess) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  AddCustomCardWidget(
-                    onTap: () async {
-                      await Modular.to.pushNamed(AppRoutes.singup);
-                      bloc.add(HomeEventReload());
-                    },
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  SizedBox(
-                    height: size.height * 0.7,
-                    child: ListView.builder(
-                        itemCount: state.data.length,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: PatientCardWidget(
-                              pacient: state.data[index],
-                              onTap: () async {
-                                await Modular.to.pushNamed(
-                                    AppRoutes.listPatientInfo,
-                                    arguments: state.data[index]);
-                                bloc.add(HomeEventReload());
-                              },
-                            ),
-                          );
-                        }),
-                  )
-                ],
+              return SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(
+                      height: 50,
+                    ),
+                    AddCustomCardWidget(
+                      onTap: () async {
+                        await Modular.to.pushNamed(AppRoutes.singup);
+                        bloc.add(HomeEventReload());
+                      },
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    SizedBox(
+                      height: size.height * 0.7,
+                      child: ListView.builder(
+                          itemCount: state.data.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: PatientCardWidget(
+                                pacient: state.data[index],
+                                onTap: () async {
+                                  await Modular.to.pushNamed(AppRoutes.listPatientInfo, arguments: state.data[index]);
+                                  bloc.add(HomeEventReload());
+                                },
+                              ),
+                            );
+                          }),
+                    )
+                  ],
+                ),
               );
             }
 
