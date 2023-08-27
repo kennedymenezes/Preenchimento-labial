@@ -47,7 +47,7 @@ class _SingaturePageState extends State<SingaturePage> {
           Center(
             child: Text(
                 isMedico
-                    ? "ASSINATURA PROFFICIONAL"
+                    ? "ASSINATURA PROFISSIONAL"
                     : "ASSINATURA PACIENTE",
                 style: Theme.of(context).textTheme.labelMedium),
           ),

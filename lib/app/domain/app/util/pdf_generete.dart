@@ -125,7 +125,7 @@ class GeneratePdf {
                             pw.SizedBox(
                               width: 80,
                               height: 80,
-                              child: pw.Image(pw.MemoryImage(base64Decode(medicalSingature!))),
+                              child: pw.Image(pw.MemoryImage(base64Decode(patientSinagute!))),
                             ),
                             pw.SizedBox(height: 15),
 
